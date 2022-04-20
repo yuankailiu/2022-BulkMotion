@@ -1,0 +1,166 @@
+{
+  "Aqaba a087": {
+    "dem": "/marmot-nobak/ykliu/aqaba/broad_dem_new/dem_resamp_a087/a087.dem",
+    "geo": "inputs/geometryGeo.h5",
+    "home": "/marmot-nobak/ykliu/aqaba/topsStack/a087/mintpy_new",
+    "mask": "maskTempCoh_high.h5",
+    "proc": "topsStack",
+    "velo1": "velocity_out/velocity1.h5",
+    "velo2": "velocity_out/velocity2.h5",
+    "veloIon": "velocity_out/velocityIon.h5"
+  },
+  "Aqaba a160": {
+    "az_df": -90.0,
+    "geo": "/marmot-nobak/ykliu/aqaba/a160/aria/azimuthAngle/20141028_20141016",
+    "proc": "ARIA"
+  },
+  "Aqaba d021": {
+    "dem": "/marmot-nobak/ykliu/aqaba/broad_dem_new/dem_resamp_d021/d021.dem",
+    "geo": "inputs/geometryGeo.h5",
+    "home": "/marmot-nobak/ykliu/aqaba/topsStack/d021/mintpy/",
+    "mask": "maskTempCoh_high.h5",
+    "proc": "topsStack",
+    "velo1": "velocity_out/velocity1.h5",
+    "velo2": "velocity_out/velocity2.h5",
+    "veloIon": "velocity_out/velocityIon.h5"
+  },
+  "Aqaba d123": {
+    "az_na": ">-99.0",
+    "geo": "/marmot-nobak/ykliu/aqaba/d123/process/merged/geom_reference/los.geo",
+    "proc": "topsApp"
+  },
+  "Australia d046": {
+    "dem": "/marmot-nobak/ykliu/australia/dem/dem_resamp_d046/d046.dem",
+    "geo": "inputs/geometryGeo.h5",
+    "home": "/marmot-nobak/ykliu/australia/d046/mintpy",
+    "mask": "maskTempCoh_high.h5",
+    "proc": "topsStack",
+    "velo1": "velocity_out/velocity1.h5",
+    "velo2": "velocity_out/velocity2.h5",
+    "veloIon": "velocity_out/velocityIon.h5"
+  },
+  "Australia d046_exc": {
+    "dem": "/marmot-nobak/ykliu/australia/dem/dem_resamp_d046/d046.dem",
+    "geo": "inputs/geometryGeo.h5",
+    "home": "/marmot-nobak/ykliu/australia/d046/mintpy",
+    "mask": "maskTempCoh_high.h5",
+    "proc": "topsStack",
+    "velo1": "velocity_out_exc/velocity1.h5",
+    "velo2": "velocity_out_exc/velocity2_msk.h5",
+    "veloIon": "velocity_out_exc/velocityIon.h5"
+  },
+  "Australia d046_noERA5": {
+    "dem": "/marmot-nobak/ykliu/australia/dem/dem_resamp_d046/d046.dem",
+    "geo": "inputs/geometryGeo.h5",
+    "home": "/marmot-nobak/ykliu/australia/d046/mintpy",
+    "mask": "maskTempCoh_high.h5",
+    "proc": "topsStack",
+    "velo1": "velocity_out/velocity1_noERA5.h5",
+    "velo2": "velocity_out/velocity2_noERA5.h5",
+    "veloIon": "velocity_out/velocityIon.h5"
+  },
+  "Australia d046_noESD": {
+    "dem": "/marmot-nobak/ykliu/australia/dem/dem_resamp_d046/d046.dem",
+    "geo": "inputs/geometryGeo.h5",
+    "home": "/marmot-nobak/ykliu/australia/d046/mintpy_noESD",
+    "mask": "maskTempCoh_high.h5",
+    "proc": "topsStack",
+    "velo1": "velocity_out/velocity1.h5",
+    "velo2": "velocity_out/velocity2.h5",
+    "veloIon": "velocity_out/velocityIon.h5"
+  },
+  "Australia d119": {
+    "dem": "/marmot-nobak/ykliu/australia/dem/dem_resamp_d119/d119.dem",
+    "geo": "inputs/geometryGeo.h5",
+    "home": "/marmot-nobak/ykliu/australia/d119/mintpy",
+    "mask": "maskTempCoh_high.h5",
+    "proc": "topsStack",
+    "velo1": "velocity_out/velocity1.h5",
+    "velo2": "velocity_out/velocity2.h5",
+    "veloIon": "velocity_out/velocityIon.h5"
+  },
+  "David a069": {
+    "lat": "/marmot-nobak/ykliu/david/a069/stack_proc/merged/geom_reference/lat.rdr",
+    "lon": "/marmot-nobak/ykliu/david/a069/stack_proc/merged/geom_reference/lon.rdr",
+    "los": "/marmot-nobak/ykliu/david/a069/stack_proc/merged/geom_reference/los.rdr",
+    "proc": "topsStack"
+  },
+  "Haiyuan a128": {
+    "geo": "/marmot-nobak/ykliu/haiyuan/a128/process/20220105-20220117/merged/los.rdr.geo",
+    "proc": "topsApp"
+  },
+  "Haiyuan d033": {
+    "geo": "/marmot-nobak/ykliu/haiyuan/d033/process/20211229-20220110/merged/los.rdr.geo",
+    "proc": "topsApp"
+  },
+  "Makran a013": {
+    "dem": "/marmot-nobak/ykliu/makran/a013/dem_resamp_a013/a013.dem",
+    "geo": "sub_geometryGeo_merge.h5",
+    "home": "/marmot-nobak/olstephe/InSAR/Makran/T13a/mintpy/merged_files",
+    "mask": null,
+    "proc": "topsApp",
+    "velo1": null,
+    "velo2": "merge_T13a_timeseries_fit_SET_ERA5_Ion_demErr_msk.h5",
+    "veloIon": null
+  },
+  "Makran a086": {
+    "dem": "/marmot-nobak/ykliu/makran/a086/dem_resamp_a086/a086.dem",
+    "geo": "geometryGeo_merge.h5",
+    "home": "/marmot-nobak/olstephe/InSAR/Makran/T86a/mintpy/merged_files",
+    "mask": null,
+    "proc": "topsApp",
+    "velo1": null,
+    "velo2": "merge_T86a_timeseries_fit_SET_ERA5_Ion_demErr_msk.h5",
+    "veloIon": null
+  },
+  "Makran a115": {
+    "dem": "/marmot-nobak/ykliu/makran/a115/dem_resamp_a115/a115.dem",
+    "geo": "inputs/geo_geometryRadar.h5",
+    "home": "/marmot-nobak/olstephe/InSAR/Makran/T115a/mintpy/process_stack_all_time_full_eff_repeat_ion",
+    "mask": null,
+    "proc": "topsApp",
+    "velo1": null,
+    "velo2": "timeseries_fits/geo_timeseries_fit_SET_ERA5_Ion_demErr_msk.h5",
+    "veloIon": null
+  },
+  "Makran a159": {
+    "dem": "/marmot-nobak/ykliu/makran/a159/dem_resamp_a159/a159.dem",
+    "geo": "sub_geometryGeo_merge.h5",
+    "home": "/marmot-nobak/olstephe/InSAR/Makran/T159a/mintpy/merged_files",
+    "mask": null,
+    "proc": "topsApp",
+    "velo1": null,
+    "velo2": "merge_T159a_timeseries_fit_SET_ERA5_Ion_demErr_msk.h5",
+    "veloIon": null
+  },
+  "Makran d020": {
+    "dem": "/marmot-nobak/ykliu/makran/d020/dem_resamp_d020/d020.dem",
+    "geo": "sub_geometryGeo_merge.h5",
+    "home": "/marmot-nobak/olstephe/InSAR/Makran/T20d/mintpy/merged_files",
+    "mask": null,
+    "proc": "topsApp",
+    "velo1": null,
+    "velo2": "merge_T20d_timeseries_fit_SET_ERA5_Ion_demErr_msk.h5",
+    "veloIon": null
+  },
+  "Makran d093": {
+    "geo": "/marmot-nobak/olstephe/InSAR/Makran/T93d/mintpy/process_full_skip_1_2_six_month_stages/inputs/geometryGeo.h5",
+    "proc": "topsApp"
+  },
+  "Sierra a064": {
+    "geo": "/marmot-nobak/ykliu/LV/a064/mintpy/inputs/geometryGeo.h5",
+    "proc": "topsApp"
+  },
+  "Sierra a137": {
+    "geo": "/marmot-nobak/ykliu/LV/a137/mintpy/inputs/geometryGeo.h5",
+    "proc": "topsApp"
+  },
+  "Sierra d144": {
+    "geo": "/marmot-nobak/ykliu/LV/d144/mintpy/inputs/geometryGeo.h5",
+    "proc": "topsApp"
+  },
+  "Texas d085": {
+    "geo": "/marmot-nobak/ykliu/texas/d085/mintpy/inputs/geometryGeo.h5",
+    "proc": "topsStack"
+  }
+}

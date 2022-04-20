@@ -1,0 +1,13 @@
+geopandas
+gdal
+h5py
+matplotlib
+mintpy
+numpy
+pandas
+pyaps3
+pysolid
+scipy
+ipynb       # to import functions from *.ipynb files
+cvxpy       # do L1 norm Least Sqaures
+sklearn     # as above

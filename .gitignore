@@ -1,0 +1,8 @@
+*checkpoints*
+*.DS_Store
+*.pyc
+*isce.log
+pic/*.png
+pic/*.pdf
+notebooks/old/*
+data/*
