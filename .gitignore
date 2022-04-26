@@ -5,4 +5,4 @@
 pic/*.png
 pic/*.pdf
 notebooks/old/*
-data/*
+out_h5/*.h5
