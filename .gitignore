@@ -2,7 +2,8 @@
 *.DS_Store
 *.pyc
 *isce.log
-pic/*.png
-pic/*.pdf
+*/*.h5
+pic
+post
+data
 notebooks/old/*
-out_h5/*.h5

@@ -10,12 +10,13 @@
 import os
 import sys
 import numpy as np
+import matplotlib
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
 
 import scipy
 import sklearn
 import cvxpy as cp
-
 
 ## Load from MintPy
 from mintpy.utils import readfile, utils as ut
@@ -25,7 +26,7 @@ from mintpy.objects.coord import coordinate
 ## Load plate motion package, unit, etc.
 import time
 import platemotion
-import pandas as pd
+import csv
 from astropy import units as u
 from collections import namedtuple
 
@@ -38,7 +39,6 @@ plt.rcParams.update({'font.size': 16})
 ##################################################################
 
 def build_PMM(platename, omega_cart=None, omega_sph=None, model='MyPMM', plateBound='MRVL', plot=False, fontsize=14, outdir=None):
-
     pkg_dir = os.path.dirname(platemotion.__file__)
 
     if plateBound == 'MRVL':
@@ -51,11 +51,12 @@ def build_PMM(platename, omega_cart=None, omega_sph=None, model='MyPMM', plateBo
         print('No such plate boundary table built-in: {}'.format(plateBound))
         sys.exit(1)
 
-    df = pd.read_csv(csvfile, header=0, squeeze=True)
-    plate_ab = df.set_index('Plate').T.to_dict('records')[0]
+    plate_abv = dict()
+    with open(csvfile, mode='r') as inp:
+        reader = csv.reader(inp)
+        plate_abv = {rows[0]:rows[1] for rows in reader}
 
-
-    plate = platemotion.Plate.from_file(f'{pkg_dir}/data/{bndsdir}/{plate_ab[platename]}',skiprows=1)
+    plate = platemotion.Plate.from_file(f'{pkg_dir}/data/{bndsdir}/{plate_abv[platename]}',skiprows=1)
     plate.set_name(platename)
 
     # Check input variables
@@ -88,7 +89,10 @@ def build_PMM(platename, omega_cart=None, omega_sph=None, model='MyPMM', plateBo
     fontsize_orig = float(plt.rcParams['font.size'])
     plt.rcParams['font.size'] = fontsize
     if plot:
-        outfile = f"{outdir}/pmm_{model}_{platename}_{plateBound}.png"
+        if outdir is not None:
+            outfile = f"{outdir}/pmm_{model}_{platename}_{plateBound}.png"
+        elif outdir is None:
+            outfile = None
         plate.plot(figname=outfile, zoom=1, scale=500, U=20)
     plt.rcParams['font.size'] = float(fontsize_orig)
     return plate
@@ -296,6 +300,9 @@ def scatter_fields(data1, data2, labels=['data1','data2'], vlim=[-20,20], title=
 
 
 def plot_range_ramp(data1, data2=None, range_dist=None, type=None, latitude=None, titstr='', super_title=None, vlim=[None, None], norm='L2', plot=True, outfile=False):
+
+    cmap='plasma'
+
     # compare different inputs
     if data2 is not None:
         if data1.shape == data2.shape:
@@ -322,7 +329,7 @@ def plot_range_ramp(data1, data2=None, range_dist=None, type=None, latitude=None
         factor     = float(width)
     else:
         xarry      = np.array(range_dist)
-        xlabel     = '{} range distance [km]'.format(type.title())
+        xlabel     = '{} range [km]'.format(type.title())
         slope_unit = 'mm/yr/km'
         factor     = 1.0
         if latitude is None:
@@ -330,18 +337,20 @@ def plot_range_ramp(data1, data2=None, range_dist=None, type=None, latitude=None
             ylabel = 'Azimuth bin'
         else:
             yarry  = np.array(latitude)
-            ylabel = 'Latitude [deg]'
+            ylabel = r'Latitude [$^\circ$]'
 
     # Plot single scatter plot
     if ncols == 1:
         if plot:
             # Set the figure
-            fig, ax = plt.subplots(figsize=[8,8], ncols=ncols, sharey=True, constrained_layout=True)
+            fig, ax = plt.subplots(figsize=[8,8], ncols=ncols, sharey=True)
         x = xarry.flatten()[~np.isnan(data1.flatten())]
         y = data1.flatten()[~np.isnan(data1.flatten())]
         c = yarry.flatten()[~np.isnan(data1.flatten())]
         y = y - np.nanmedian(y)
         print('Range ramp scatter plot shifted by median {}'.format(np.nanmedian(y)))
+        print('Ground range min/max:', np.nanmin(xarry), np.nanmax(xarry))
+        print('Valid (non-nan pixels) ground range min/max:', np.nanmin(x), np.nanmax(x))
 
         # linear fit to the trend
         if norm == 'L2':
@@ -361,30 +370,38 @@ def plot_range_ramp(data1, data2=None, range_dist=None, type=None, latitude=None
             params_legend += '\n'+show_legend
 
         if plot:
-            sc = ax.scatter(x, y, s=2, c=c)
+            sc = ax.scatter(x, y, s=1.5, c=c, cmap=cmap)
+            sc.set_rasterized(True)
             ax.plot(x, y_pred, lw=2, label=show_legend, c='r')
-            ax.legend(loc='lower left')
+            ax.legend(loc='lower left', frameon=False)
             ax.set_xlabel(xlabel)
             ax.set_ylabel('LOS velocity [mm/yr]')
             cbar = plt.colorbar(sc, ax=ax)
             cbar.ax.set_ylabel(ylabel='Azimuth', rotation=270, labelpad=20)
-            ax.set_xticks(np.arange(0,250,50))
             ax.set_title(titstr, fontsize=plt.rcParams['font.size'], pad=20.0)
             ax.set_ylim(vlim[0], vlim[1])
-            ax.set_xlim(np.min(x), np.max(x))
+            ax.set_xlim(0, 250)
+            ax.set_xticks(np.arange(0,300,50))
+            ax.yaxis.set_major_locator(MaxNLocator(5))
+            ax.tick_params(direction='in', length=10, width=2, colors='k', top=True, right=True)
+            [sp.set_linewidth(2) for sp in ax.spines.values()]
+            [sp.set_zorder(10)   for sp in ax.spines.values()]
             plt.show()
 
     # Plot scatter plots comparison
     if ncols == 3:
         if plot:
             # Set the figure
-            fig, axs = plt.subplots(figsize=[7*ncols,8], ncols=ncols, sharey=True, gridspec_kw={'wspace':0.05}, constrained_layout=True)
+            fig, axs = plt.subplots(figsize=[7*ncols,8], ncols=ncols, sharey=True, gridspec_kw={'wspace':.03}, constrained_layout=True)
+
         for i, (ax, data) in enumerate(zip(axs, [data1, data2, data1-data2])):
             x = xarry.flatten()[~np.isnan(data.flatten())]
             y =  data.flatten()[~np.isnan(data.flatten())]
             c = yarry.flatten()[~np.isnan(data.flatten())]
             y = y - np.nanmedian(y)
             print('Range ramp scatter plot shifted by median {}'.format(np.nanmedian(y)))
+            print('Ground range min/max:', np.nanmin(xarry), np.nanmax(xarry))
+            print('Valid (non-nan pixels) ground range min/max:', np.nanmin(x), np.nanmax(x))
 
             # linear fit to the trend
             if norm == 'L2':
@@ -404,26 +421,35 @@ def plot_range_ramp(data1, data2=None, range_dist=None, type=None, latitude=None
                 params_legend += '\n'+show_legend
 
             if plot:
-                sc = ax.scatter(x, y, s=2, c=c)
+                sc = ax.scatter(x, y, s=1.5, c=c, cmap=cmap)
+                sc.set_rasterized(True)
                 ax.plot(x, y_pred, lw=3, label=show_legend, c='crimson')
-                ax.legend(loc='lower left')
+                leg=ax.legend(loc='lower left', markerscale=0.6, frameon=False)
+                leg.get_lines()[0].set_linewidth(5)
                 ax.set_xlabel(xlabel)
                 ax.set_ylabel('LOS velocity [mm/yr]')
-                ax.set_xticks(np.arange(0,250,50))
                 ax.set_title(titstr[i], fontsize=plt.rcParams['font.size'], pad=20.0)
                 ax.set_ylim(vlim[0], vlim[1])
-                ax.set_xlim(np.min(x), np.max(x))
+                ax.set_xlim(0, 250)
+                ax.set_xticks(np.arange(50,250,50)) # skip ticks at 0 and 250 for cleaness
+                ax.yaxis.set_major_locator(MaxNLocator(5))
+                ax.tick_params(direction='in', length=10, width=2, colors='k', top=True, right=True)
+                [sp.set_linewidth(2) for sp in ax.spines.values()]
+                [sp.set_zorder(10)   for sp in ax.spines.values()]
                 if i>0:
-                    ax.axes.yaxis.set_visible(False)
+                    ax.tick_params(labelleft=False)
+                    ax.set(ylabel=None)
 
         if plot:
             if super_title:
                 sup_y = misc.know_loc_from_subplots(fig, yoff=0.8)
                 fig.suptitle(super_title, fontsize=plt.rcParams['font.size']*1.2, y=sup_y)
 
-            cax = misc.make_cbar_ax_side(fig, yloc='center', ch=0.5, cw_in=0.3)
-            cbar = plt.colorbar(sc, cax=cax)
+            #cax = misc.make_cbar_ax_side(fig, yloc='center', ch=1.0, cw_in=0.3)
+            #cbar = plt.colorbar(sc, cax=cax)
+            cbar = plt.colorbar(sc, ax=ax)
             cbar.ax.set_ylabel(ylabel=ylabel, rotation=270, labelpad=28)
+            [sp.set_linewidth(2) for sp in cbar.ax.spines.values()]
 
     # Save figure
     if outfile:
@@ -493,7 +519,7 @@ def compute_ground_range(atr, rs, z):
     gamma = np.arccos(( (Re+h)**2 + (Re+z)**2 - rs**2 ) / ( 2*(Re+h)*(Re+z) ))
 
     # set the zero ground range at the nearest range pixel
-    rg    = Re * gamma   # ground range
+    rg  = Re * gamma   # ground range
     rg -= np.nanmin(rg)
 
     return rg
@@ -848,7 +874,8 @@ class LOSgeom():
         if len(self.V_pmm_enu.shape) == 1:
             vstr = '({}E, {}N mm/y)'.format(self.V_pmm_enu[0], self.V_pmm_enu[1])
         elif len(self.V_pmm_enu.shape) == 3:
-            vstr = '(pixelwise from PMM)'
+            vstr = '(PMM)'
+
 
         ## How many subplots you need
         if indata is None:
@@ -903,6 +930,9 @@ def ballpark_ramp(orbit, prate=[0, 100], vertical=False, given_inc='table', give
     print('Average satellite heading  : {:.4f}'.format(head_avg))
     print('Average satellite incidence: {:.4f}'.format(inc_avg))
 
+    if orbit.startswith('A'):   o_abv = 'Asc'
+    if orbit.startswith('D'):   o_abv = 'Dsc'
+
     if not vertical:
         for i, v0 in enumerate(pr_arr):
             for j, th in enumerate(th_arr):
@@ -915,21 +945,32 @@ def ballpark_ramp(orbit, prate=[0, 100], vertical=False, given_inc='table', give
                     lnc    = 'w'
                 else:
                     ramp   = np.mean(geom_class.V_pmm[:,-1]) - np.mean(geom_class.V_pmm[:,0])
-                    clabel = 'Range of cross-track ramp [mm/yr]\n(positive as range-increasing)'
+                    clabel = 'Cross-track ramp [mm/yr]\n(positive as range-increasing)'
                     cmap   = 'RdBu_r'
                     lnc    = 'k'
                 rp_arr[i,j] = ramp
 
+        X, Y = np.meshgrid(th_arr, pr_arr)
+        Z    = np.array(rp_arr)
+        bicmap = matplotlib.colors.ListedColormap(['dimgrey', 'k'])
+
         fig, ax = plt.subplots(figsize=[10,7])
-        im = ax.pcolormesh(th_arr, pr_arr, rp_arr, shading='auto', linewidth=.4, cmap=cmap)
+        im = ax.pcolormesh(X, Y, Z, shading='auto', linewidth=.4, cmap=cmap)
+        CS = ax.contour(X, Y, Z, levels=10, linewidths=2., cmap=bicmap)
+        mid_lv = np.where(CS.levels==0)[0][0]
+        CS.collections[mid_lv].remove()
+        cb = plt.clabel(CS, CS.levels, inline=True, fontsize=plt.rcParams['font.size'] * .8)
+        for i, cbi in enumerate(cb):
+            if cbi._text == '0':
+                cb[i]._text = ''
         cbar = plt.colorbar(im)
         im.set_edgecolor('face')
         cbar.ax.set_ylabel(ylabel=clabel, rotation=270, labelpad=50)
         plt.axvline(x=head_avg, c=lnc, ls='--', lw=3)
-        plt.text(head_avg+10, np.mean(prate), '{} scene heading'.format(orbit.title()), va='center', ha='center', rotation=270)
-        plt.xlabel('Heading of horizontal bulk motion [deg]\n(clockwise from north)')
+        plt.text(head_avg+10, np.mean(prate), '{} track heading'.format(o_abv), va='center', ha='center', rotation=270)
+        plt.xlabel(r'Heading of horizontal bulk motion [$^\circ$]'+'\n(clockwise from north)')
         plt.ylabel('Rate of bulk motion [mm/yr]')
-        plt.title('{} LoS range ramp\ngiven a uniform horizontal bulk motion'.format(orbit.title()), pad=20.)
+        plt.title('{}'.format(orbit.title()), pad=20.)
 
         # Save figure
         outfile = '{}/losRamp_H_bulkmotion_{}_{}.pdf'.format(pic_dir, orbit.title(), Npr)
@@ -946,7 +987,7 @@ def ballpark_ramp(orbit, prate=[0, 100], vertical=False, given_inc='table', give
                 lnc    = 'w'
             else:
                 ramp   = np.mean(geom_class.V_pmm[:,-1]) - np.mean(geom_class.V_pmm[:,0])
-                ylabel = 'Range of cross-track ramp [mm/yr]\n(positive as range-increasing)'
+                ylabel = 'Cross-track ramp [mm/yr]\n(positive as range-increasing)'
                 lnc    = 'k'
             rp_arr[i] = ramp
 
@@ -955,7 +996,7 @@ def ballpark_ramp(orbit, prate=[0, 100], vertical=False, given_inc='table', give
         plt.axhline(y=0, c='k', ls='--', lw=1)
         plt.xlabel('Rate of vertical bulk motion [mm/yr]\n(positive as uplift)')
         plt.ylabel(ylabel)
-        plt.title('{} LoS range ramp\ngiven a pure vertical bulk motion'.format(orbit.title()), pad=20.)
+        plt.title('{}'.format(orbit.title()), pad=20.)
 
         # Save figure
         outfile = '{}/losRamp_V_bulkmotion_{}_{}.pdf'.format(pic_dir, orbit.title(), Npr)
@@ -965,14 +1006,77 @@ def ballpark_ramp(orbit, prate=[0, 100], vertical=False, given_inc='table', give
 
 def inputDict(Dict):
     dic = dict(Dict)
-    homedir = dic['home']
-    for k in ['geo', 'velo1', 'velo2', 'veloIon', 'mask']:
+    homedir     = dic['home']
+    idx         = [k.startswith('velo') for k in Dict.keys()]
+    velo_lst    = list(np.array(list(Dict.keys()))[idx])
+    append_lst  = ['geo', 'mask'] + velo_lst
+
+    for k in append_lst:
         if dic[k]:
             dic[k] = os.path.normpath(f"{homedir}/{dic[k]}")
         else:
             dic[k] = None
     obj = namedtuple("ObjectName", dic.keys())(*dic.values())
     return obj
+
+
+def reference_dataDict(v, atr, **kwargs):
+    """
+    Referencing for visualization the data
+    + If None, then use the original reference from the file
+    + If False, then remove the median from the corresponding data (no single reference pixel is plotted)
+    """
+    coord = coordinate(atr)
+    if kwargs['refpoint']:
+        refpoint = np.array(kwargs['refpoint'])
+        if any([isinstance(i, float) for i in refpoint]):
+            ref_y = coord.lalo2yx(refpoint[0], coord_type='lat')
+            ref_x = coord.lalo2yx(refpoint[1], coord_type='lon')
+            atr['REF_LAT'], atr['REF_LON'] = refpoint
+            atr['REF_Y'], atr['REF_X'] = ref_y, ref_x
+        else:
+            ref_y, ref_x = refpoint
+            atr['REF_LAT'] = coord.yx2lalo(refpoint[0], coord_type='y')
+            atr['REF_LON'] = coord.yx2lalo(refpoint[1], coord_type='x')
+            atr['REF_Y'], atr['REF_X'] = ref_y, ref_x
+        print('Use new reference point at lat/lon = {} / {}'.format(atr['REF_LAT'], atr['REF_LON']))
+    elif kwargs['refpoint'] is None:
+        ref_y, ref_x = int(atr['REF_Y']), int(atr['REF_X'])
+        atr['REF_LAT'] = coord.yx2lalo(ref_y, coord_type='y')
+        atr['REF_LON'] = coord.yx2lalo(ref_x, coord_type='x')
+        print('Use original reference point at lat/lon = {} / {}'.format(atr['REF_LAT'], atr['REF_LON']))
+    elif kwargs['refpoint'] is False:
+        print('No reference point, remove a median from each dataset!!')
+
+    for ikey in v:
+        data_key  = f'<{ikey}>'
+
+        # mask the weird pixels by identifying modes
+        N_thres      = 50
+        vals, counts = np.unique(v[ikey], return_counts=True)
+        index        = np.argsort(counts, axis=0)[::-1]
+        modes        = np.where(counts[index]>N_thres)[0]
+        if len(modes)>0:
+            #print('Set weird modes to NaN: {}'.format(ikey))
+            for m in modes:
+                #print('  Count: {} \t value: {}'.format(counts[index[m]], vals[index[m]]))
+                v[ikey][v[ikey]==vals[index[m]]] = np.nan
+
+        # shift by the reference pixel
+        if kwargs['refpoint'] is not False:
+            if np.isnan(v[ikey][ref_y, ref_x]):
+                print('Reference point ({},{}) is NaN in {}, choose another point!'.format(ref_y, ref_x, ikey))
+                sys.exit(1)
+            else:
+                tmp_ref   = v[ikey][ref_y, ref_x]
+                v[ikey]  -= tmp_ref
+                print('Reference data: {:30s} \t shifted by {}'.format(data_key, tmp_ref))
+
+        # shift by the median
+        elif kwargs['refpoint'] is False:
+            tmp_ref   = np.nanmedian(v[ikey])
+            v[ikey]  -= tmp_ref
+            print('Reference data: {:30s} \t shifted by {}'.format(data_key, tmp_ref))
 
 
 def evaluate_bulkMotion(dDict, dName, v_const=None, omega_cart=None, omega_sph=None, platename=None, plateBound='MRVL', **kwargs):
@@ -990,7 +1094,6 @@ def evaluate_bulkMotion(dDict, dName, v_const=None, omega_cart=None, omega_sph=N
     time_stamp = time.time()
     print('\n----- {:.2f} seconds ----- start timing\n'.format((time.time()-time_stamp)))
 
-
     if 'pmm'         not in kwargs.keys():   kwargs['pmm']             = 'MyPMM'
     if 'font_pmm'    not in kwargs.keys():   kwargs['font_pmm']        = 14
     if 'plot_pmm'    not in kwargs.keys():   kwargs['plot_pmm']        = False
@@ -998,6 +1101,7 @@ def evaluate_bulkMotion(dDict, dName, v_const=None, omega_cart=None, omega_sph=N
     if 'plot_rmp'    not in kwargs.keys():   kwargs['plot_rmp']        = False
     if 'plot_ion'    not in kwargs.keys():   kwargs['plot_ion']        = False
     if 'plot_maj'    not in kwargs.keys():   kwargs['plot_maj']        = True
+    if 'fig_ext'     not in kwargs.keys():   kwargs['fig_ext']         = 'pdf'
     if 'vlim_i'      not in kwargs.keys():   kwargs['vlim_i']          = [None,None]
     if 'vlim_b'      not in kwargs.keys():   kwargs['vlim_b']          = [None,None]
     if 'vlim_r'      not in kwargs.keys():   kwargs['vlim_r']          = [None,None]
@@ -1007,6 +1111,7 @@ def evaluate_bulkMotion(dDict, dName, v_const=None, omega_cart=None, omega_sph=N
     if 'suffix'      not in kwargs.keys():   kwargs['suffix']          = ''
     if 'cmap'        not in kwargs.keys():   kwargs['cmap']            = 'RdBu_r'
     if 'dpi'         not in kwargs.keys():   kwargs['dpi']             = 300
+
     if (len(kwargs['suffix'])>0) and not kwargs['suffix'].startswith('_'):
         kwargs['suffix'] = '_' + kwargs['suffix']
 
@@ -1017,7 +1122,12 @@ def evaluate_bulkMotion(dDict, dName, v_const=None, omega_cart=None, omega_sph=N
     tobj = inputDict(dDict[dName])
 
     # Read attributes
-    atrfile = list(set([tobj.velo1, tobj.velo2, tobj.veloIon]))[0]
+    if tobj.velo1:
+        atrfile = tobj.velo1
+    elif tobj.velo2:
+        atrfile = tobj.velo2
+    elif tobj.veloIon:
+        atrfile = tobj.veloIon
     atr     = readfile.read(atrfile, datasetName='velocity')[1]
 
     # Retrieve LoS geometry from the dataset
@@ -1070,57 +1180,14 @@ def evaluate_bulkMotion(dDict, dName, v_const=None, omega_cart=None, omega_sph=N
 
     ### Read the velocity fields from data paths (pile them into dict())
     v = dict()
-    if tobj.velo1 is not None:
-        v['LOS velocity (no iono corr)']  = misc.read_img(tobj.velo1, tobj.mask)
-    if tobj.velo2 is not None:
-        v['LOS velocity (iono corr)']     = misc.read_img(tobj.velo2, tobj.mask)
-    if tobj.veloIon is not None:
-        v['LOS iono apparent velocity']   = misc.read_img(tobj.veloIon, tobj.mask)
-    v['LOS Plate bulk motion']            = np.array(geom_class.V_pmm)
+    if tobj.velo1 is not None:      v['LOS velocity (no iono corr)']  = misc.read_img(tobj.velo1, tobj.mask)
+    if tobj.velo2 is not None:      v['LOS velocity (iono corr)']     = misc.read_img(tobj.velo2, tobj.mask)
+    if tobj.veloIon is not None:    v['LOS iono apparent velocity']   = misc.read_img(tobj.veloIon, tobj.mask)
+    v['LOS Plate bulk motion'] = np.array(geom_class.V_pmm)
 
 
-    ### Referencing
-    # Reference point for visualization the velocity
-    # If None, then use the original reference from the file
-    if kwargs['refpoint']:
-        refpoint = np.array(kwargs['refpoint'])
-        coord = coordinate(atr)
-        if any([isinstance(i, float) for i in refpoint]):
-            ref_y = coord.lalo2yx(refpoint[0], coord_type='lat')
-            ref_x = coord.lalo2yx(refpoint[1], coord_type='lon')
-            atr['REF_LAT'], atr['REF_LON'] = refpoint
-            atr['REF_Y'], atr['REF_X'] = ref_y, ref_x
-        else:
-            ref_y, ref_x = refpoint
-            atr['REF_LAT'] = coord.yx2lalo(refpoint[0], coord_type='y')
-            atr['REF_LON'] = coord.yx2lalo(refpoint[1], coord_type='x')
-            atr['REF_Y'], atr['REF_X'] = ref_y, ref_x
-        print('Use new reference point at lat/lon = {} / {}'.format(atr['REF_LAT'], atr['REF_LON']))
-    else:
-        ref_y, ref_x = int(atr['REF_Y']), int(atr['REF_X'])
-        atr['REF_LAT'] = coord.yx2lalo(ref_y, coord_type='y')
-        atr['REF_LON'] = coord.yx2lalo(ref_x, coord_type='x')
-        print('Use original reference point at lat/lon = {} / {}'.format(atr['REF_LAT'], atr['REF_LON']))
-
-    for ikey in v:
-        if np.isnan(v[ikey][ref_y, ref_x]):
-            print('Reference point ({},{}) is NaN in {}, choose another point!'.format(ref_y, ref_x, ikey))
-            sys.exit(1)
-        else:
-            tmp_ref   = v[ikey][ref_y, ref_x]
-            v[ikey]  -= tmp_ref
-            print('Reference data: <{}> \t shifted by {}'.format(ikey, tmp_ref))
-
-            # mask the weird pixels by identifying modes
-            N_thres      = 50
-            vals, counts = np.unique(v[ikey], return_counts=True)
-            index        = np.argsort(counts, axis=0)[::-1]
-            modes        = np.where(counts[index]>N_thres)[0]
-            if len(modes)>0:
-                print('Set weird modes in NaN: {}'.format(ikey))
-                for m in modes:
-                    print('  Count: {} \t value: {}'.format(counts[index[m]], vals[index[m]]))
-                    v[ikey][v[ikey]==vals[index[m]]] = np.nan
+    ### Reference point for visualization the velocity
+    reference_dataDict(v, atr, **kwargs)
 
 
     ### Apply PMM correction
@@ -1130,27 +1197,27 @@ def evaluate_bulkMotion(dDict, dName, v_const=None, omega_cart=None, omega_sph=N
     time_stamp = time.time()
 
 
-    # Compare the effect of iono correction
+    # Plot to compare the effect of iono correction
     if kwargs['plot_ion']:
         v_show = {ikey: v[ikey] for ikey in ['LOS velocity (no iono corr)', 'LOS velocity (iono corr)', 'LOS iono apparent velocity']}
         kwargs['vlims'] = list(kwargs['vlim_i'])
-        fn = f"{kwargs['pic_dir']}/{name}_{track_id}{kwargs['suffix']}_ionCorr.png"
+        fn = f"{kwargs['pic_dir']}/{name}_{track_id}{kwargs['suffix']}_ionCorr.{kwargs['fig_ext']}"
         misc.plot_imgs(v_show, atr, tobj.dem, super_title=f'{name}_{track_id}', outfile=fn, **kwargs)
         print('\n----- {:.2f} seconds ----- plotted iono comparison\n'.format((time.time()-time_stamp)))
         time_stamp = time.time()
 
     # The ramp in the real data
     if kwargs['plot_rmp']:
-        fn = f"{kwargs['pic_dir']}/{name}_{track_id}{kwargs['suffix']}_rampfit.png"
+        fn = f"{kwargs['pic_dir']}/{name}_{track_id}{kwargs['suffix']}_rampfit.{kwargs['fig_ext']}"
         geom_class.plot_ramp(track=f'{name}_{track_id}', indata=v['LOS velocity (iono corr)'], compare=True, vlim=kwargs['vlim_r'], sn=None, outfile=fn)
         print('\n----- {:.2f} seconds ----- plotted range ramps\n'.format((time.time()-time_stamp)))
         time_stamp = time.time()
 
-    # ~~Major result~~: compare the effect of bulk motion compensation
+    # ~~Major result~~: plot to compare the effect of bulk motion compensation
     if kwargs['plot_maj']:
         v_show = {ikey: v[ikey] for ikey in ['LOS velocity (iono corr)', 'LOS Plate bulk motion', 'LOS velocity (plate motion corr)']}
         kwargs['vlims'] = list(kwargs['vlim_b'])
-        fn = f"{kwargs['pic_dir']}/{name}_{track_id}{kwargs['suffix']}_bmCorr.png"
+        fn = f"{kwargs['pic_dir']}/{name}_{track_id}{kwargs['suffix']}_bmCorr.{kwargs['fig_ext']}"
         misc.plot_imgs(v_show, atr, tobj.dem, super_title=f'{name}_{track_id}', outfile=fn, **kwargs)
         print('\n----- {:.2f} seconds ----- plotted pmm correction\n'.format((time.time()-time_stamp)))
         time_stamp = time.time()
