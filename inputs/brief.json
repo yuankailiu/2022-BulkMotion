@@ -5,15 +5,15 @@
       -0.136,
       1.444
     ],
-    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_a087_vel_bmModel.h5",
-    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_a087_vel_bmModelRaw.h5",
-    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_a087.dem",
-    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_a087_Geo.h5",
-    "mask": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_a087_msk.h5",
-    "velo1": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_a087_velRaw.h5",
-    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_a087_vel.h5",
-    "veloIon": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_a087_velIon.h5",
-    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_a087_vel_bmCorr.h5"
+    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_a087_vel_bmModel.h5",
+    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_a087_vel_bmModelRaw.h5",
+    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_a087.dem",
+    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_a087_Geo.h5",
+    "mask": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_a087_msk.h5",
+    "velo1": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_a087_velRaw.h5",
+    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_a087_vel.h5",
+    "veloIon": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_a087_velIon.h5",
+    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_a087_vel_bmCorr.h5"
   },
   "Aqaba d021": {
     "EP_cart": [
@@ -21,15 +21,15 @@
       -0.136,
       1.444
     ],
-    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_d021_vel_bmModel.h5",
-    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_d021_vel_bmModelRaw.h5",
-    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_d021.dem",
-    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_d021_Geo.h5",
-    "mask": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_d021_msk.h5",
-    "velo1": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_d021_velRaw.h5",
-    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_d021_vel.h5",
-    "veloIon": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_d021_velIon.h5",
-    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_d021_vel_bmCorr.h5"
+    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_d021_vel_bmModel.h5",
+    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_d021_vel_bmModelRaw.h5",
+    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_d021.dem",
+    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_d021_Geo.h5",
+    "mask": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_d021_msk.h5",
+    "velo1": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_d021_velRaw.h5",
+    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_d021_vel.h5",
+    "veloIon": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_d021_velIon.h5",
+    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_d021_vel_bmCorr.h5"
   },
   "Aqaba d021_bdg": {
     "EP_cart": [
@@ -37,15 +37,15 @@
       -0.136,
       1.444
     ],
-    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_d021_bdg_vel_bmModel.h5",
-    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_d021_bdg_vel_bmModelRaw.h5",
-    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_d021_bdg.dem",
-    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_d021_bdg_Geo.h5",
-    "mask": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_d021_bdg_msk.h5",
-    "velo1": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_d021_bdg_velRaw.h5",
-    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_d021_bdg_vel.h5",
-    "veloIon": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_d021_bdg_velIon.h5",
-    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Aqaba_d021_bdg_vel_bmCorr.h5"
+    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_d021_bdg_vel_bmModel.h5",
+    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_d021_bdg_vel_bmModelRaw.h5",
+    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_d021_bdg.dem",
+    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_d021_bdg_Geo.h5",
+    "mask": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_d021_bdg_msk.h5",
+    "velo1": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_d021_bdg_velRaw.h5",
+    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_d021_bdg_vel.h5",
+    "veloIon": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_d021_bdg_velIon.h5",
+    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Aqaba_d021_bdg_vel_bmCorr.h5"
   },
   "Australia d046": {
     "EP_cart": [
@@ -53,15 +53,15 @@
       1.182,
       1.215
     ],
-    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_vel_bmModel.h5",
-    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_vel_bmModelRaw.h5",
-    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046.dem",
-    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_Geo.h5",
-    "mask": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_msk.h5",
-    "velo1": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_velRaw.h5",
-    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_vel.h5",
-    "veloIon": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_velIon.h5",
-    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_vel_bmCorr.h5"
+    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_vel_bmModel.h5",
+    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_vel_bmModelRaw.h5",
+    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046.dem",
+    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_Geo.h5",
+    "mask": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_msk.h5",
+    "velo1": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_velRaw.h5",
+    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_vel.h5",
+    "veloIon": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_velIon.h5",
+    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_vel_bmCorr.h5"
   },
   "Australia d046_exc": {
     "EP_cart": [
@@ -69,15 +69,15 @@
       1.182,
       1.215
     ],
-    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_exc_vel_bmModel.h5",
-    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_exc_vel_bmModelRaw.h5",
-    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_exc.dem",
-    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_exc_Geo.h5",
-    "mask": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_exc_msk.h5",
-    "velo1": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_exc_velRaw.h5",
-    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_exc_vel.h5",
-    "veloIon": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_exc_velIon.h5",
-    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_exc_vel_bmCorr.h5"
+    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_exc_vel_bmModel.h5",
+    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_exc_vel_bmModelRaw.h5",
+    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_exc.dem",
+    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_exc_Geo.h5",
+    "mask": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_exc_msk.h5",
+    "velo1": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_exc_velRaw.h5",
+    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_exc_vel.h5",
+    "veloIon": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_exc_velIon.h5",
+    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_exc_vel_bmCorr.h5"
   },
   "Australia d046_noERA5": {
     "EP_cart": [
@@ -85,15 +85,15 @@
       1.182,
       1.215
     ],
-    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_noERA5_vel_bmModel.h5",
-    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_noERA5_vel_bmModelRaw.h5",
-    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_noERA5.dem",
-    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_noERA5_Geo.h5",
-    "mask": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_noERA5_msk.h5",
-    "velo1": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_noERA5_velRaw.h5",
-    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_noERA5_vel.h5",
-    "veloIon": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_noERA5_velIon.h5",
-    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_noERA5_vel_bmCorr.h5"
+    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_noERA5_vel_bmModel.h5",
+    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_noERA5_vel_bmModelRaw.h5",
+    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_noERA5.dem",
+    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_noERA5_Geo.h5",
+    "mask": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_noERA5_msk.h5",
+    "velo1": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_noERA5_velRaw.h5",
+    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_noERA5_vel.h5",
+    "veloIon": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_noERA5_velIon.h5",
+    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_noERA5_vel_bmCorr.h5"
   },
   "Australia d046_noESD": {
     "EP_cart": [
@@ -101,15 +101,15 @@
       1.182,
       1.215
     ],
-    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_noESD_vel_bmModel.h5",
-    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_noESD_vel_bmModelRaw.h5",
-    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_noESD.dem",
-    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_noESD_Geo.h5",
-    "mask": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_noESD_msk.h5",
-    "velo1": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_noESD_velRaw.h5",
-    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_noESD_vel.h5",
-    "veloIon": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_noESD_velIon.h5",
-    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d046_noESD_vel_bmCorr.h5"
+    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_noESD_vel_bmModel.h5",
+    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_noESD_vel_bmModelRaw.h5",
+    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_noESD.dem",
+    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_noESD_Geo.h5",
+    "mask": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_noESD_msk.h5",
+    "velo1": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_noESD_velRaw.h5",
+    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_noESD_vel.h5",
+    "veloIon": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_noESD_velIon.h5",
+    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d046_noESD_vel_bmCorr.h5"
   },
   "Australia d119": {
     "EP_cart": [
@@ -117,15 +117,15 @@
       1.182,
       1.215
     ],
-    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d119_vel_bmModel.h5",
-    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d119_vel_bmModelRaw.h5",
-    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d119.dem",
-    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d119_Geo.h5",
-    "mask": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d119_msk.h5",
-    "velo1": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d119_velRaw.h5",
-    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d119_vel.h5",
-    "veloIon": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d119_velIon.h5",
-    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Australia_d119_vel_bmCorr.h5"
+    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d119_vel_bmModel.h5",
+    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d119_vel_bmModelRaw.h5",
+    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d119.dem",
+    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d119_Geo.h5",
+    "mask": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d119_msk.h5",
+    "velo1": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d119_velRaw.h5",
+    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d119_vel.h5",
+    "veloIon": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d119_velIon.h5",
+    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Australia_d119_vel_bmCorr.h5"
   },
   "Makran a013": {
     "EP_cart": [
@@ -133,12 +133,12 @@
       -0.531,
       0.77
     ],
-    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a013_vel_bmModel.h5",
-    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a013_vel_bmModelRaw.h5",
-    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a013.dem",
-    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a013_Geo.h5",
-    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a013_vel.h5",
-    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a013_vel_bmCorr.h5"
+    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a013_vel_bmModel.h5",
+    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a013_vel_bmModelRaw.h5",
+    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a013.dem",
+    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a013_Geo.h5",
+    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a013_vel.h5",
+    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a013_vel_bmCorr.h5"
   },
   "Makran a086": {
     "EP_cart": [
@@ -146,12 +146,12 @@
       -0.531,
       0.77
     ],
-    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a086_vel_bmModel.h5",
-    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a086_vel_bmModelRaw.h5",
-    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a086.dem",
-    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a086_Geo.h5",
-    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a086_vel.h5",
-    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a086_vel_bmCorr.h5"
+    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a086_vel_bmModel.h5",
+    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a086_vel_bmModelRaw.h5",
+    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a086.dem",
+    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a086_Geo.h5",
+    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a086_vel.h5",
+    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a086_vel_bmCorr.h5"
   },
   "Makran a115": {
     "EP_cart": [
@@ -159,12 +159,12 @@
       -0.531,
       0.77
     ],
-    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a115_vel_bmModel.h5",
-    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a115_vel_bmModelRaw.h5",
-    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a115.dem",
-    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a115_Geo.h5",
-    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a115_vel.h5",
-    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a115_vel_bmCorr.h5"
+    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a115_vel_bmModel.h5",
+    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a115_vel_bmModelRaw.h5",
+    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a115.dem",
+    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a115_Geo.h5",
+    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a115_vel.h5",
+    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a115_vel_bmCorr.h5"
   },
   "Makran a159": {
     "EP_cart": [
@@ -172,12 +172,12 @@
       -0.531,
       0.77
     ],
-    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a159_vel_bmModel.h5",
-    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a159_vel_bmModelRaw.h5",
-    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a159.dem",
-    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a159_Geo.h5",
-    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a159_vel.h5",
-    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_a159_vel_bmCorr.h5"
+    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a159_vel_bmModel.h5",
+    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a159_vel_bmModelRaw.h5",
+    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a159.dem",
+    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a159_Geo.h5",
+    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a159_vel.h5",
+    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_a159_vel_bmCorr.h5"
   },
   "Makran d020": {
     "EP_cart": [
@@ -185,11 +185,11 @@
       -0.531,
       0.77
     ],
-    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_d020_vel_bmModel.h5",
-    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_d020_vel_bmModelRaw.h5",
-    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_d020.dem",
-    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_d020_Geo.h5",
-    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_d020_vel.h5",
-    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/in_h5/Makran_d020_vel_bmCorr.h5"
+    "bmModel": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_d020_vel_bmModel.h5",
+    "bmModelRaw": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_d020_vel_bmModelRaw.h5",
+    "dem": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_d020.dem",
+    "geo": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_d020_Geo.h5",
+    "velo2": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_d020_vel.h5",
+    "velo_bmCorr": "/net/kraken/nobak/ykliu/2022-BulkMotion/data/Makran_d020_vel_bmCorr.h5"
   }
 }

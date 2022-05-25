@@ -9,6 +9,16 @@
     "velo2": "velocity_out/velocity2.h5",
     "veloIon": "velocity_out/velocityIon.h5"
   },
+  "Aqaba a087_new": {
+    "dem": "/marmot-nobak/ykliu/aqaba/broad_dem_new/dem_resamp_a087/a087.dem",
+    "geo": "inputs/geometryGeo.h5",
+    "home": "/marmot-nobak/ykliu/aqaba/topsStack/a087/mintpy",
+    "mask": "maskTempCoh_high.h5",
+    "proc": "topsStack",
+    "velo1": "velocity_out/velocity1.h5",
+    "velo2": "velocity_out/velocity2.h5",
+    "veloIon": "velocity_out/velocityIon.h5"
+  },
   "Aqaba a160": {
     "az_df": -90.0,
     "geo": "/marmot-nobak/ykliu/aqaba/a160/aria/azimuthAngle/20141028_20141016",
