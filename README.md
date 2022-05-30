@@ -1,6 +1,6 @@
 ## Jupyter Notebooks for:
 
-Oliver L. Stephenson, Yuan-Kai Liu, Zhang Yunjun, and Mark Simons (2022). Correcting for the Ubiquitous Impact of Plate Motions on Long-Wavelength InSAR Velocities
+Oliver L. Stephenson, Yuan-Kai Liu, Zhang Yunjun, Mark Simons, and Paul Rosen (2022). The Impact of Plate Motions on Long-Wavelength InSAR-Derived Velocity Fields
 
 
 ### Data 
