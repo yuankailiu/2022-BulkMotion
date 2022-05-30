@@ -102,17 +102,18 @@ def make_cbar_ax_side(fig, yloc='center', ch=1.0, cw_in=0.4):
 
 def colorbar_inset(fig, ax, data, im, vlim=None, atr=None, cbar_inset=True, **kwargs):
     # Initialize the kwargs
+    fs_fac = 0.9
     if 'unit'            not in kwargs.keys():   kwargs['unit']           = ''
     if 'ub'              not in kwargs.keys():   kwargs['ub']             = 99.8
     if 'lb'              not in kwargs.keys():   kwargs['lb']             =   .2
     if 'cbox_alpha'      not in kwargs.keys():   kwargs['cbox_alpha']     = .9
     if 'cbox_hide'       not in kwargs.keys():   kwargs['cbox_hide']      = False
+    if 'cbox_wh'         not in kwargs.keys():   kwargs['cbox_wh']        = None
     if 'clabel_pad'      not in kwargs.keys():   kwargs['clabel_pad']     = 0.
     if 'corient'         not in kwargs.keys():   kwargs['corient']        = 'vertical'
-    if 'unit_fontsize'   not in kwargs.keys():   kwargs['unit_fontsize']  = kwargs['font_size'] * .75
-    if 'bound_fontsize'  not in kwargs.keys():   kwargs['bound_fontsize'] = kwargs['font_size'] * .7
-    if 'ticks_fontsize'  not in kwargs.keys():   kwargs['ticks_fontsize'] = kwargs['font_size'] * .75
-    if 'max_fontsize'    not in kwargs.keys():   kwargs['max_fontsize']   = 22
+    if 'unit_fontsize'   not in kwargs.keys():   kwargs['unit_fontsize']  = kwargs['font_size'] * fs_fac
+    if 'bound_fontsize'  not in kwargs.keys():   kwargs['bound_fontsize'] = kwargs['font_size'] * fs_fac
+    if 'ticks_fontsize'  not in kwargs.keys():   kwargs['ticks_fontsize'] = kwargs['font_size'] * fs_fac
     if 'cbox_loc'        not in kwargs.keys():
         if kwargs['corient'] == 'horizontal':
                                                  kwargs['cbox_loc']       = (0., 0., .6, .08)
@@ -128,11 +129,17 @@ def colorbar_inset(fig, ax, data, im, vlim=None, atr=None, cbar_inset=True, **kw
         return
     if kwargs['corient'] == 'horizontal':
         text_rotate, ubx, uby, lbx, lby, uha, lha  = 0 , 0.98, 0.5,  0.02, 0.5, 'right', 'left'
-        cbar_w, cbar_h = '80%', '50%'
+        if kwargs['cbox_wh'] is None:
+            cbar_w, cbar_h = '80%', '50%'
+        else:
+            cbar_w, cbar_h = kwargs['cbox_wh']
         cbar_anchor    = (0, 0.15, 1, 1)
     elif kwargs['corient'] == 'vertical':
         text_rotate, ubx, uby, lbx, lby, uha, lha  = 270, 0.5 , 1.08, 0.5, -0.08, 'center', 'center'
-        cbar_w, cbar_h = '20%', '74%'
+        if kwargs['cbox_wh'] is None:
+            cbar_w, cbar_h = '20%', '74%'
+        else:
+            cbar_w, cbar_h = kwargs['cbox_wh']
         cbar_anchor    = (-.1, 0, 1, 1)
 
     upper_val = np.nanpercentile(data, kwargs['ub'])
@@ -147,9 +154,6 @@ def colorbar_inset(fig, ax, data, im, vlim=None, atr=None, cbar_inset=True, **kw
         if kwargs['cbox_hide']:
             cbox.axis('off')
         cax = inset_axes(cbox, width=cbar_w, height=cbar_h, loc='center', bbox_transform=cbox.transAxes, bbox_to_anchor=cbar_anchor)
-        kwargs['unit_fontsize']  = np.clip(a=kwargs['unit_fontsize'],  a_min=None, a_max=kwargs['max_fontsize']*0.9)
-        kwargs['bound_fontsize'] = np.clip(a=kwargs['bound_fontsize'], a_min=None, a_max=kwargs['max_fontsize']*0.9)
-        kwargs['ticks_fontsize'] = np.clip(a=kwargs['ticks_fontsize'], a_min=None, a_max=kwargs['max_fontsize'])
     else:
         cax = ax
         kwargs['unit_fontsize']  = plt.rcParams['font.size']
@@ -201,10 +205,12 @@ def annotation_inset(ax, annot, **kwargs):
     # Initialize the kwargs
     if 'annot_boxsize' not in kwargs.keys():   kwargs['annot_boxsize'] = 0.1
     if 'annot_lw'      not in kwargs.keys():   kwargs['annot_lw']      = 0.5
+    if 'abox_alpha'    not in kwargs.keys():   kwargs['abox_alpha']    = .9
     boxsize = kwargs['annot_boxsize']
     annot_loc = (0, 1-boxsize, boxsize*ratio, boxsize)
     abox = ax.inset_axes(annot_loc, zorder=10)
     abox.set_facecolor('w')
+    abox.patch.set_alpha(kwargs['abox_alpha'])
     abox.get_xaxis().set_visible(False)
     abox.get_yaxis().set_visible(False)
     abox.text(0.5, 0.5, annot, fontsize=12, transform=abox.transAxes, va='center', ha='center')
