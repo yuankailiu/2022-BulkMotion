@@ -11,7 +11,6 @@
 
 
 import os
-from selectors import EpollSelector
 import warnings
 import numpy as np
 import cvxpy as cp
