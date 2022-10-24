@@ -103,8 +103,8 @@ def colorbar_inset(fig, ax, data, im, vlim=None, atr=None, cbar_inset=True, **kw
     # Initialize the kwargs
     fs_fac = 0.9
     if 'unit'            not in kwargs.keys():   kwargs['unit']           = ''
-    if 'ub'              not in kwargs.keys():   kwargs['ub']             = 99.8
-    if 'lb'              not in kwargs.keys():   kwargs['lb']             =   .2
+    if 'ub'              not in kwargs.keys():   kwargs['ub']             = 97.5
+    if 'lb'              not in kwargs.keys():   kwargs['lb']             =  2.5
     if 'cbox_alpha'      not in kwargs.keys():   kwargs['cbox_alpha']     = .9
     if 'cbox_hide'       not in kwargs.keys():   kwargs['cbox_hide']      = False
     if 'cbox_wh'         not in kwargs.keys():   kwargs['cbox_wh']        = None
@@ -766,9 +766,12 @@ def plot_rampprof(data1, data2=None, range_dist=None, latitude=None, super_title
         print('{} range distance spans {:.1f} km'.format(kwargs['range_type'].title(), range_span))
         params_legend += 'slope = {:.3f} {:s}'.format(fit[0]*factor, slope_unit)
         if kwargs['slope_leg'] == 'newline':
+            rslope = fit[0]*range_span*100/range_span            
             show_legend = '{:.1f}'.format(fit[0]*range_span)
         elif kwargs['slope_leg']:
-            show_legend = '{:.1f} mm/yr/track'.format(fit[0]*range_span)
+            rslope = fit[0]*range_span*100/range_span
+            show_legend = '{:.1f}'.format(rslope)
+            show_legend += r' $\frac{mm/yr}{100km}$'
         else:
             show_legend = False
         params_legend += '\n'+show_legend
@@ -847,8 +850,10 @@ def plot_rampprof(data1, data2=None, range_dist=None, latitude=None, super_title
         ax.axes.yaxis.set_ticklabels([])
 
     if kwargs['slope_leg']:
-        ax.legend(loc="lower center", handlelength=0, handletextpad=0, frameon=False, labelcolor='b', fontsize=8)
-
+        print(rslope , 'mm/year/100 km')
+        #ax.legend(loc="lower center", handlelength=0, handletextpad=0, frameon=False, labelcolor='b', fontsize=8)
+        #ax.text(0.51, 0.02, show_legend, ha='center', va='bottom', color='blue', transform=ax.transAxes)
+        
     ax.set_xlim(xlim)
     [sp.set_linewidth(.7) for sp in ax.spines.values()]
     [sp.set_zorder(10)    for sp in ax.spines.values()]

@@ -1,6 +1,6 @@
 # Codes, docs, and Jupyter Notebooks for:
 
-Oliver L. Stephenson, Yuan-Kai Liu, Zhang Yunjun, Mark Simons, and Paul Rosen (2022). The Impact of Plate Motions on Long-Wavelength InSAR-Derived Velocity Fields. *Geophysical Research Letters [Paper # 2022GL099835]*.
+Oliver L. Stephenson, Yuan-Kai Liu, Zhang Yunjun, Mark Simons, Paul Rosen, and Xiaohua Xu (2022). The Impact of Plate Motions on Long-Wavelength InSAR-Derived Velocity Fields. *Geophysical Research Letters, DOI: 10.1029/2022GL099835*.
 
 
 ## Folder structure:
